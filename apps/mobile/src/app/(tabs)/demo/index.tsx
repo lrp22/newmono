@@ -1,11 +1,14 @@
 import { Text, View, Alert, ScrollView, Pressable } from "react-native";
-import { Button, Card } from "ui";
+import { Button, Card } from "@app/ui";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 
 export default function Demo() {
   return (
-    <SafeAreaView className="flex-1 bg-gray-50" edges={['top', 'left', 'right']}>
+    <SafeAreaView
+      className="flex-1 bg-gray-50"
+      edges={["top", "left", "right"]}
+    >
       <ScrollView
         className="flex-1"
         showsVerticalScrollIndicator={false}
@@ -23,36 +26,45 @@ export default function Demo() {
             Cross-platform components built with React Native and NativeWind
           </Text>
           <View className="bg-purple-100 px-3 py-1 rounded-full">
-            <Text className="text-purple-800 text-sm font-medium">📱 Mobile App</Text>
+            <Text className="text-purple-800 text-sm font-medium">
+              📱 Mobile App
+            </Text>
           </View>
         </View>
 
         {/* Component Showcase */}
         <View className="gap-6">
-
           {/* Button Component */}
           <Card variant="elevated">
-            <Text className="text-lg font-semibold text-gray-900 mb-4">Button</Text>
+            <Text className="text-lg font-semibold text-gray-900 mb-4">
+              Button
+            </Text>
             <View className="gap-3">
               <Button
                 title="Primary Button"
-                onPress={() => Alert.alert('Success', 'Works natively on mobile!')}
+                onPress={() =>
+                  Alert.alert("Success", "Works natively on mobile!")
+                }
               />
               <Button
                 title="Secondary Button"
                 variant="secondary"
-                onPress={() => Alert.alert('Info', 'Same component, different style')}
+                onPress={() =>
+                  Alert.alert("Info", "Same component, different style")
+                }
               />
             </View>
           </Card>
 
           {/* Card Component */}
           <Card variant="elevated">
-            <Text className="text-lg font-semibold text-gray-900 mb-4">Card</Text>
+            <Text className="text-lg font-semibold text-gray-900 mb-4">
+              Card
+            </Text>
             <Card variant="default">
               <Text className="text-gray-700 text-sm">
-                This nested card demonstrates consistent spacing and styling across platforms.
-                The same component works identically on web.
+                This nested card demonstrates consistent spacing and styling
+                across platforms. The same component works identically on web.
               </Text>
             </Card>
           </Card>
@@ -60,32 +72,42 @@ export default function Demo() {
           {/* How It Works */}
           <Card>
             <View className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4">
-              <Text className="text-lg font-semibold text-gray-900 mb-3">How It Works</Text>
+              <Text className="text-lg font-semibold text-gray-900 mb-3">
+                How It Works
+              </Text>
               <Text className="text-gray-600 text-sm mb-4 leading-5">
-                Components use React Native primitives (View, Text, Pressable) with NativeWind for styling.
-                React Native Web transforms these into HTML elements for the browser.
+                Components use React Native primitives (View, Text, Pressable)
+                with NativeWind for styling. React Native Web transforms these
+                into HTML elements for the browser.
               </Text>
 
               <View className="flex-row gap-3">
                 <View className="flex-1 bg-white p-3 rounded border border-blue-100">
                   <View className="flex-row items-center gap-2 mb-1">
                     <Text className="text-blue-600">🌐</Text>
-                    <Text className="font-medium text-blue-900 text-sm">Web</Text>
+                    <Text className="font-medium text-blue-900 text-sm">
+                      Web
+                    </Text>
                   </View>
-                  <Text className="text-blue-700 text-xs">React Native Web → HTML</Text>
+                  <Text className="text-blue-700 text-xs">
+                    React Native Web → HTML
+                  </Text>
                 </View>
 
                 <View className="flex-1 bg-white p-3 rounded border border-purple-100">
                   <View className="flex-row items-center gap-2 mb-1">
                     <Text className="text-purple-600">📱</Text>
-                    <Text className="font-medium text-purple-900 text-sm">Mobile</Text>
+                    <Text className="font-medium text-purple-900 text-sm">
+                      Mobile
+                    </Text>
                   </View>
-                  <Text className="text-purple-700 text-xs">Native iOS/Android</Text>
+                  <Text className="text-purple-700 text-xs">
+                    Native iOS/Android
+                  </Text>
                 </View>
               </View>
             </View>
           </Card>
-
         </View>
 
         {/* Navigation */}
@@ -94,7 +116,9 @@ export default function Demo() {
             <Pressable className="bg-blue-600 px-6 py-2 rounded-lg active:opacity-80">
               <View className="flex-row items-center gap-2">
                 <Text className="text-white text-sm">🏠</Text>
-                <Text className="text-white font-medium text-sm">Back to Home</Text>
+                <Text className="text-white font-medium text-sm">
+                  Back to Home
+                </Text>
               </View>
             </Pressable>
           </Link>

@@ -26,7 +26,7 @@ app.use(
 app.use(express.json());
 
 // 1. Mount Better Auth
-app.all("/api/auth/*", toNodeHandler(auth));
+app.all("/api/auth/*splat", toNodeHandler(auth));
 
 // 2. Setup oRPC with the extracted context
 const rpcHandler = new RPCHandler(appRouter);

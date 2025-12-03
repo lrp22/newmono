@@ -10,18 +10,20 @@
   "scripts": {
     "push": "drizzle-kit push",
     "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "drizzle-orm": "^0.39.1",
-    "pg": "^8.13.1",
-    "dotenv": "^16.4.7",
-    "zod": "^3.24.1"
+    "@neondatabase/serverless": "^1.0.2",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.7",
+    "ws": "^8.18.3",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
-    "@types/pg": "^8.11.10",
-    "@types/node": "^22.10.5",
-    "drizzle-kit": "^0.30.2",
-    "typescript": "^5.7.3"
+    "@types/node": "^24.10.1",
+    "@types/ws": "^8.18.1",
+    "drizzle-kit": "^0.31.7",
+    "typescript": "^5.9.3"
   }
 }
