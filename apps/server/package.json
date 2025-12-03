@@ -9,9 +9,9 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "db": "workspace:*",
-    "auth": "workspace:*",
-    "api": "workspace:*",
+    "@app/db": "workspace:*",
+    "@app/auth": "workspace:*",
+    "@app/api": "workspace:*",
     "express": "^4.21.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

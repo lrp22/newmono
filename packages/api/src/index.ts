@@ -1,17 +1,7 @@
 import { os, ORPCError } from "@orpc/server";
-import { auth } from "auth";
+import { Context } from "./context"; // Import the type
 
-// Helper to extract the exact types returned by getSession
-type SessionResponse = Awaited<ReturnType<typeof auth.api.getSession>>;
-type Session = NonNullable<SessionResponse>["session"];
-type User = NonNullable<SessionResponse>["user"];
-
-export type Context = {
-  session?: Session;
-  user?: User;
-  req?: any;
-};
-
+// Initialize os with the Context type
 const o = os.$context<Context>();
 
 const authMiddleware = o.middleware(async ({ context, next }) => {
@@ -31,6 +21,4 @@ const authMiddleware = o.middleware(async ({ context, next }) => {
 
 export const publicProcedure = o;
 export const protectedProcedure = o.use(authMiddleware);
-
-// 👇 FIX: Bind the router to 'o' so it doesn't lose context
-export const router = o.router.bind(o);
+export const router = o.router.bind(o); // Bind for safety

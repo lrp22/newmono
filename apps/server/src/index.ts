@@ -1,19 +1,25 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import { toNodeHandler, fromNodeHeaders } from "better-auth/node";
-import { auth } from "auth";
+import { toNodeHandler } from "better-auth/node";
+import { auth } from "@app/auth";
 import { RPCHandler } from "@orpc/server/node";
-import { onError } from "@orpc/server";
-import { appRouter } from "api/routers";
+import { appRouter } from "@app/api/routers";
+import { createContext } from "@app/api/context";
 
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Improved CORS from Repo B
 app.use(
   cors({
-    origin: [process.env.CORS_ORIGIN || "http://localhost:3000"],
-    credentials: true,
+    origin: [
+      process.env.CORS_ORIGIN || "http://localhost:3000",
+      "http://localhost:8081", // Expo Metro bundler often runs here
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
+    credentials: true, // Critical for cookies
   })
 );
 
@@ -22,36 +28,20 @@ app.use(express.json());
 // 1. Mount Better Auth
 app.all("/api/auth/*", toNodeHandler(auth));
 
-// 2. Setup oRPC
-const rpcHandler = new RPCHandler(appRouter, {
-  interceptors: [
-    onError((error) => {
-      console.error("RPC Error:", error);
-    }),
-  ],
-});
+// 2. Setup oRPC with the extracted context
+const rpcHandler = new RPCHandler(appRouter);
 
-// 3. Mount oRPC with Auth Context
 app.use("/api", async (req, res, next) => {
-  const session = await auth.api.getSession({
-    headers: fromNodeHeaders(req.headers),
-  });
+  // Create context using the logic we extracted to the package
+  const context = await createContext({ req, res });
 
   const result = await rpcHandler.handle(req, res, {
     prefix: "/api",
-    context: {
-      req,
-      session: session?.session,
-      user: session?.user,
-    },
+    context, // Pass the context
   });
 
   if (result.matched) return;
   next();
-});
-
-app.get("/", (req, res) => {
-  res.send("Server is running! 🚀 API is available at /api");
 });
 
 app.listen(port, () => {

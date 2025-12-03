@@ -21,6 +21,15 @@ importers:
 
   apps/mobile:
     dependencies:
+      '@app/api':
+        specifier: workspace:*
+        version: link:../../packages/api
+      '@app/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@app/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@expo/vector-icons':
         specifier: ^15.0.3
         version: 15.0.3(expo-font@14.0.9(expo@54.0.25)(react-native@0.81.5(@babel/core@7.28.3)(@types/react@19.1.13)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.28.3)(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
@@ -102,9 +111,6 @@ importers:
       react-native-webview:
         specifier: 13.15.0
         version: 13.15.0(react-native@0.81.5(@babel/core@7.28.3)(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
-      ui:
-        specifier: workspace:*
-        version: link:../../packages/ui
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -130,24 +136,24 @@ importers:
 
   apps/server:
     dependencies:
+      '@app/api':
+        specifier: workspace:*
+        version: link:../../packages/api
+      '@app/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@app/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@orpc/server':
         specifier: ^1.3.1
         version: 1.12.2(ws@8.18.3)
-      api:
-        specifier: workspace:*
-        version: link:../../packages/api
-      auth:
-        specifier: workspace:*
-        version: link:../../packages/auth
       better-auth:
         specifier: ^1.1.13
         version: 1.4.4(next@16.0.5(babel-plugin-react-compiler@1.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       cors:
         specifier: ^2.8.5
         version: 2.8.5
-      db:
-        specifier: workspace:*
-        version: link:../../packages/db
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
@@ -173,6 +179,15 @@ importers:
 
   apps/web:
     dependencies:
+      '@app/api':
+        specifier: workspace:*
+        version: link:../../packages/api
+      '@app/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@app/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@orpc/client':
         specifier: ^1.12.2
         version: 1.12.2
@@ -182,12 +197,6 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.90.11
         version: 5.90.11(react@19.1.0)
-      api:
-        specifier: workspace:*
-        version: link:../../packages/api
-      auth:
-        specifier: workspace:*
-        version: link:../../packages/auth
       better-auth:
         specifier: ^1.4.4
         version: 1.4.4(next@16.0.5(babel-plugin-react-compiler@1.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -203,9 +212,6 @@ importers:
       react-native-web:
         specifier: 0.21.1
         version: 0.21.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      ui:
-        specifier: workspace:*
-        version: link:../../packages/ui
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -240,21 +246,18 @@ importers:
 
   packages/api:
     dependencies:
+      '@app/auth':
+        specifier: workspace:*
+        version: link:../auth
+      '@app/db':
+        specifier: workspace:*
+        version: link:../db
       '@orpc/server':
         specifier: ^1.3.1
         version: 1.12.2(ws@8.18.3)
       '@orpc/zod':
         specifier: ^1.3.1
         version: 1.12.2(@orpc/contract@1.12.2)(@orpc/server@1.12.2(ws@8.18.3))(ws@8.18.3)(zod@3.25.76)
-      auth:
-        specifier: workspace:*
-        version: link:../auth
-      better-auth:
-        specifier: ^1.1.13
-        version: 1.4.4(next@16.0.5(babel-plugin-react-compiler@1.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      db:
-        specifier: workspace:*
-        version: link:../db
       zod:
         specifier: ^3.24.1
         version: 3.25.76
@@ -265,12 +268,15 @@ importers:
 
   packages/auth:
     dependencies:
+      '@app/db':
+        specifier: workspace:*
+        version: link:../db
+      '@better-auth/expo':
+        specifier: ^1.1.13
+        version: 1.4.5(@better-auth/core@1.4.4(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.1.4(zod@4.1.13))(jose@6.1.3)(kysely@0.28.8)(nanostores@1.1.0))(better-auth@1.4.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(expo-constants@18.0.10)(expo-linking@8.0.9)(expo-web-browser@15.0.9(expo@54.0.25)(react-native@0.81.5(@babel/core@7.28.3)(@types/react@19.1.13)(react@19.1.0)))
       better-auth:
         specifier: ^1.1.13
         version: 1.4.4(next@16.0.5(babel-plugin-react-compiler@1.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      db:
-        specifier: workspace:*
-        version: link:../db
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
@@ -871,6 +877,25 @@ packages:
       jose: ^6.1.0
       kysely: ^0.28.5
       nanostores: ^1.0.1
+
+  '@better-auth/expo@1.4.5':
+    resolution: {integrity: sha512-TCxy3SYMvfHlMBo0vlUvcQ8Dou8KX3JHBP5mFs5DtfUK/kGG59QnW7QoB6iFQdMwvO5h6Kgq9IKu0i0ON3j0jw==}
+    peerDependencies:
+      '@better-auth/core': 1.4.5
+      better-auth: 1.4.5
+      expo-constants: '>=17.0.0'
+      expo-linking: '>=7.0.0'
+      expo-network: ^8.0.7
+      expo-web-browser: '>=14.0.0'
+    peerDependenciesMeta:
+      expo-constants:
+        optional: true
+      expo-linking:
+        optional: true
+      expo-network:
+        optional: true
+      expo-web-browser:
+        optional: true
 
   '@better-auth/telemetry@1.4.4':
     resolution: {integrity: sha512-Eh18QPznmu0gL1vImas4PqEOEx57JJZEWfSSCHsGzcHcAEgX+QSh0fGhMERm4uInfBmDm2niTbu+/pUvVD+2kQ==}
@@ -2824,6 +2849,14 @@ packages:
 
   better-call@1.1.3:
     resolution: {integrity: sha512-zN4sgcl5sI4MZDx0l3HpJkhKbidPGWyR/9TjCUmNFWl2la5z7Mk7xT5TxqGdN33OaU7fzHj/kzDYz7ck3IXvsQ==}
+    peerDependencies:
+      zod: ^4.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+
+  better-call@1.1.4:
+    resolution: {integrity: sha512-NJouLY6IVKv0nDuFoc6FcbKDFzEnmgMNofC9F60Mwx1Ecm7X6/Ecyoe5b+JSVZ42F/0n46/M89gbYP1ZCVv8xQ==}
     peerDependencies:
       zod: ^4.0.0
     peerDependenciesMeta:
@@ -6724,6 +6757,29 @@ snapshots:
       nanostores: 1.1.0
       zod: 4.1.13
 
+  '@better-auth/core@1.4.4(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.1.4(zod@4.1.13))(jose@6.1.3)(kysely@0.28.8)(nanostores@1.1.0)':
+    dependencies:
+      '@better-auth/utils': 0.3.0
+      '@better-fetch/fetch': 1.1.18
+      '@standard-schema/spec': 1.0.0
+      better-call: 1.1.4(zod@4.1.13)
+      jose: 6.1.3
+      kysely: 0.28.8
+      nanostores: 1.1.0
+      zod: 4.1.13
+
+  '@better-auth/expo@1.4.5(@better-auth/core@1.4.4(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.1.4(zod@4.1.13))(jose@6.1.3)(kysely@0.28.8)(nanostores@1.1.0))(better-auth@1.4.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(expo-constants@18.0.10)(expo-linking@8.0.9)(expo-web-browser@15.0.9(expo@54.0.25)(react-native@0.81.5(@babel/core@7.28.3)(@types/react@19.1.13)(react@19.1.0)))':
+    dependencies:
+      '@better-auth/core': 1.4.4(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.1.4(zod@4.1.13))(jose@6.1.3)(kysely@0.28.8)(nanostores@1.1.0)
+      '@better-fetch/fetch': 1.1.18
+      better-auth: 1.4.4(next@16.0.5(babel-plugin-react-compiler@1.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      better-call: 1.1.4(zod@4.1.13)
+      zod: 4.1.13
+    optionalDependencies:
+      expo-constants: 18.0.10(expo@54.0.25)(react-native@0.81.5(@babel/core@7.28.3)(@types/react@19.1.13)(react@19.1.0))
+      expo-linking: 8.0.9(expo@54.0.25)(react-native@0.81.5(@babel/core@7.28.3)(@types/react@19.1.13)(react@19.1.0))(react@19.1.0)
+      expo-web-browser: 15.0.9(expo@54.0.25)(react-native@0.81.5(@babel/core@7.28.3)(@types/react@19.1.13)(react@19.1.0))
+
   '@better-auth/telemetry@1.4.4(@better-auth/core@1.4.4(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.1.3(zod@4.1.13))(jose@6.1.3)(kysely@0.28.8)(nanostores@1.1.0))':
     dependencies:
       '@better-auth/core': 1.4.4(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.1.3(zod@4.1.13))(jose@6.1.3)(kysely@0.28.8)(nanostores@1.1.0)
@@ -8882,6 +8938,15 @@ snapshots:
       '@better-auth/utils': 0.3.0
       '@better-fetch/fetch': 1.1.18
       rou3: 0.5.1
+      set-cookie-parser: 2.7.2
+    optionalDependencies:
+      zod: 4.1.13
+
+  better-call@1.1.4(zod@4.1.13):
+    dependencies:
+      '@better-auth/utils': 0.3.0
+      '@better-fetch/fetch': 1.1.18
+      rou3: 0.7.10
       set-cookie-parser: 2.7.2
     optionalDependencies:
       zod: 4.1.13
