@@ -1,0 +1,27 @@
+{
+  "name": "db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema/index.ts"
+  },
+  "scripts": {
+    "push": "drizzle-kit push",
+    "generate": "drizzle-kit generate",
+    "studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.39.1",
+    "pg": "^8.13.1",
+    "dotenv": "^16.4.7",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.10",
+    "@types/node": "^22.10.5",
+    "drizzle-kit": "^0.30.2",
+    "typescript": "^5.7.3"
+  }
+}
